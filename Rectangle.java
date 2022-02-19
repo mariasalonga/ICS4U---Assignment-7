@@ -47,7 +47,7 @@ public class Rectangle {
 
 	}
 	/**
-	 * 
+	 * This constructor assigns variables to an instance of a class if initialized with parameters.
 	 * @param tempbottomleftx contains the x of the bottom left corner of the rectangle
 	 * @param tempbottomlefty contains the y of the bottom left corner of the rectangle
 	 * @param tempWidth contains the width of the rectangle
