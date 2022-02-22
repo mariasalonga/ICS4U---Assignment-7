@@ -47,7 +47,7 @@ public class Rectangle {
 
 	}
 	/**
-	 * This constructor assigns variables to an instance of a class if initialized with parameters.
+	 * This constructor assigns variables to an instance of a class if initialized with parameters
 	 * @param tempbottomleftx contains the x of the bottom left corner of the rectangle
 	 * @param tempbottomlefty contains the y of the bottom left corner of the rectangle
 	 * @param tempWidth contains the width of the rectangle
@@ -123,7 +123,9 @@ public class Rectangle {
 	 * @return the area
 	 */
 	public int calculateArea() {
-
+		
+		//System.out.println("width: " + width);
+		//System.out.println("height: " + height);
 		int area = width * height;
 		return area;
 
@@ -134,7 +136,9 @@ public class Rectangle {
 	 * @return the perimeter of the rectangle
 	 */
 	public int calculatePerimeter() {
-
+		
+		//System.out.println("width: " + width);
+		//System.out.println("height: " + height);
 		int perimeter = (2 * width) + (2 * height);
 
 		return perimeter;
@@ -169,7 +173,7 @@ public class Rectangle {
 				
 			} else if((two.toprighty <= one.toprighty) && (two.toprighty >= one.bottomlefty)) {
 				
-				intersection = new Rectangle(one.bottomleftx, one.bottomlefty, (two.toprightx - one.bottomleftx),(two.toprighty - two.bottomlefty), two.toprightx, two.toprighty);
+				intersection = new Rectangle(one.bottomleftx, one.bottomlefty, (two.toprightx - one.bottomleftx),(two.toprighty - one.bottomlefty), two.toprightx, two.toprighty);
 				
 			} 
 			
@@ -177,8 +181,7 @@ public class Rectangle {
 			
 			if((two.bottomlefty <=one.toprighty) && (two.bottomlefty >= one.bottomlefty)) {
 				
-				
-				intersection = new Rectangle(two.bottomleftx, two.bottomlefty, (one.toprightx - two.bottomleftx),(one.toprighty - two.bottomlefty), one.toprightx, one.toprighty);
+				intersection = new Rectangle(two.bottomleftx, two.bottomlefty,(one.toprightx - two.bottomleftx),(one.toprighty - two.bottomlefty), one.toprightx, one.toprighty);
 				
 			} else if((two.toprighty <= one.toprighty) && (two.toprighty >= one.bottomlefty)) {
 				
@@ -186,7 +189,19 @@ public class Rectangle {
 				
 			}
 				
-		} 
+		}
+		
+		if ((one.bottomleftx > two.bottomleftx) && (one.toprightx < two.toprightx) && (one.toprighty > two.toprighty) && (one.bottomlefty < two.bottomlefty)) {
+			
+			intersection = new Rectangle(one.bottomleftx, two.bottomlefty,one.width,two.height, one.toprightx, two.toprighty);
+			
+		} else if ((two.bottomleftx > one.bottomleftx) && (two.toprightx < one.toprightx) && (two.toprighty > one.toprighty) && (two.bottomlefty < one.bottomlefty)) {
+			
+			intersection = new Rectangle(two.bottomleftx, one.bottomlefty,two.width,one.height, two.toprightx, one.toprighty);
+			
+		}
+		
+		
 		
 		System.out.println("The area is: " + intersection.calculateArea());
 		
@@ -242,10 +257,11 @@ public class Rectangle {
 			inside = true;
 			
 		} 
-		
 		return inside;
 		
 	}
+	
+	
 	
 	/**
 	 * Main method
@@ -253,10 +269,11 @@ public class Rectangle {
 	 */
 	public static void main(String[] args) {
 		
-		Rectangle thisOne = new Rectangle(1,1,4,3,5,4);
-		Rectangle thatOne = new Rectangle(4,1,4,3,8,4);
+		Rectangle thisOne = new Rectangle(1,1,3,2,4,3);
+		Rectangle thatOne = new Rectangle(2,0,1,4,3,4);
 		intersection(thisOne, thatOne);
 		totalPerimeter(thisOne, thatOne);
+		thisOne.contains(thatOne);
 		
 
 	}
