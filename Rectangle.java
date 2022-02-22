@@ -201,8 +201,51 @@ public class Rectangle {
 			
 		}
 		
+		if ((one.bottomleftx > two.bottomleftx) && (one.toprightx < two.toprightx) && (one.bottomlefty < two.toprighty) && (one.bottomlefty > two.bottomlefty)) {
+				
+				intersection = new Rectangle(one.bottomleftx, one.bottomlefty, one.width, (two.toprighty - one.bottomlefty), one.toprightx, two.toprighty);
+				
+		} else if((one.bottomleftx > two.bottomleftx) && (one.toprightx < two.toprightx) && (one.toprighty > two.bottomlefty) && (one.toprighty < two.toprighty)) {
+				
+				intersection = new Rectangle(one.bottomleftx,(one.toprighty - (one.toprighty - two.bottomlefty)), one.width, (one.toprighty - two.bottomlefty), one.toprightx, one.toprighty);
+				
+		}
 		
+		if ((two.bottomleftx > one.bottomleftx) && (two.toprightx < one.toprightx) && (two.bottomlefty < one.toprighty) && (two.bottomlefty > one.bottomlefty)) {
+				
+				intersection = new Rectangle(two.bottomleftx, two.bottomlefty, two.width, (one.toprighty - two.bottomlefty), two.toprightx, one.toprighty);
+				
+		} else if((two.bottomleftx > one.bottomleftx) && (two.toprightx < one.toprightx) && (two.toprighty > one.bottomlefty) && (two.toprighty < one.toprighty)) {
+				
+				intersection = new Rectangle(two.bottomleftx,(two.toprighty - (two.toprighty - one.bottomlefty)), two.width, (two.toprighty - one.bottomlefty), two.toprightx, two.toprighty);
+				
+		}
+			
 		
+		if((two.bottomlefty > one.bottomlefty) && (two.toprighty < one.toprighty)) {
+			
+			if((two.toprightx > one.bottomleftx) && (two.toprightx < one.toprightx)) {
+				
+				intersection = new Rectangle(one.bottomleftx, two.bottomlefty, (two.toprightx - one.bottomleftx), two.height, two.toprightx, two.toprighty);
+				
+			} else if((two.bottomleftx > one.bottomleftx) && (two.bottomleftx < one.toprightx)) {
+				
+				intersection = new Rectangle(two.bottomleftx, two.bottomlefty,(one.toprightx - two.bottomleftx), two.height, one.toprightx, two.toprighty);
+				
+			}
+			
+		} else if((one.bottomlefty > two.bottomlefty) && (one.toprighty < two.toprighty)) {
+			
+			if((one.toprightx > two.bottomleftx) && (one.toprightx < two.toprightx)) {
+				
+				intersection = new Rectangle(two.bottomleftx, one.bottomlefty, (one.toprightx - two.bottomleftx), one.height, one.toprightx, one.toprighty);
+				
+			} else if((one.bottomleftx > two.bottomleftx) && (one.bottomleftx < two.toprightx)) {
+				
+				intersection = new Rectangle(one.bottomleftx, one.bottomlefty,(two.toprightx - one.bottomleftx), one.height, two.toprightx, one.toprighty);
+				
+			}
+		}
 		System.out.println("The area is: " + intersection.calculateArea());
 		
 		return intersection;
@@ -269,8 +312,8 @@ public class Rectangle {
 	 */
 	public static void main(String[] args) {
 		
-		Rectangle thisOne = new Rectangle(1,1,3,2,4,3);
-		Rectangle thatOne = new Rectangle(2,0,1,4,3,4);
+		Rectangle thisOne = new Rectangle(2,2,6,4,8,6);
+		Rectangle thatOne = new Rectangle(1,3,5,2,6,5);
 		intersection(thisOne, thatOne);
 		totalPerimeter(thisOne, thatOne);
 		thisOne.contains(thatOne);
