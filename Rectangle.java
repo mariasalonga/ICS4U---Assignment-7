@@ -191,21 +191,21 @@ public class Rectangle {
 				
 		}
 		
-		if ((one.bottomleftx > two.bottomleftx) && (one.toprightx < two.toprightx) && (one.toprighty > two.toprighty) && (one.bottomlefty < two.bottomlefty)) {
+		if ((one.bottomleftx >= two.bottomleftx) && (one.toprightx <= two.toprightx) && (one.toprighty >= two.toprighty) && (one.bottomlefty <= two.bottomlefty)) {
 			
 			intersection = new Rectangle(one.bottomleftx, two.bottomlefty,one.width,two.height, one.toprightx, two.toprighty);
 			
-		} else if ((two.bottomleftx > one.bottomleftx) && (two.toprightx < one.toprightx) && (two.toprighty > one.toprighty) && (two.bottomlefty < one.bottomlefty)) {
+		} else if ((two.bottomleftx >= one.bottomleftx) && (two.toprightx <= one.toprightx) && (two.toprighty >= one.toprighty) && (two.bottomlefty <= one.bottomlefty)) {
 			
 			intersection = new Rectangle(two.bottomleftx, one.bottomlefty,two.width,one.height, two.toprightx, one.toprighty);
 			
 		}
 		
-		if ((one.bottomleftx > two.bottomleftx) && (one.toprightx < two.toprightx) && (one.bottomlefty < two.toprighty) && (one.bottomlefty > two.bottomlefty)) {
+		if ((one.bottomleftx >= two.bottomleftx) && (one.toprightx <= two.toprightx) && (one.bottomlefty <= two.toprighty) && (one.bottomlefty >= two.bottomlefty)) {
 				
 				intersection = new Rectangle(one.bottomleftx, one.bottomlefty, one.width, (two.toprighty - one.bottomlefty), one.toprightx, two.toprighty);
 				
-		} else if((one.bottomleftx > two.bottomleftx) && (one.toprightx < two.toprightx) && (one.toprighty > two.bottomlefty) && (one.toprighty < two.toprighty)) {
+		} else if((one.bottomleftx >= two.bottomleftx) && (one.toprightx <= two.toprightx) && (one.toprighty >= two.bottomlefty) && (one.toprighty <= two.toprighty)) {
 				
 				intersection = new Rectangle(one.bottomleftx,(one.toprighty - (one.toprighty - two.bottomlefty)), one.width, (one.toprighty - two.bottomlefty), one.toprightx, one.toprighty);
 				
@@ -222,25 +222,25 @@ public class Rectangle {
 		}
 			
 		
-		if((two.bottomlefty > one.bottomlefty) && (two.toprighty < one.toprighty)) {
+		if((two.bottomlefty >= one.bottomlefty) && (two.toprighty <= one.toprighty)) {
 			
-			if((two.toprightx > one.bottomleftx) && (two.toprightx < one.toprightx)) {
+			if((two.toprightx >= one.bottomleftx) && (two.toprightx <= one.toprightx)) {
 				
 				intersection = new Rectangle(one.bottomleftx, two.bottomlefty, (two.toprightx - one.bottomleftx), two.height, two.toprightx, two.toprighty);
 				
-			} else if((two.bottomleftx > one.bottomleftx) && (two.bottomleftx < one.toprightx)) {
+			} else if((two.bottomleftx >= one.bottomleftx) && (two.bottomleftx <= one.toprightx)) {
 				
 				intersection = new Rectangle(two.bottomleftx, two.bottomlefty,(one.toprightx - two.bottomleftx), two.height, one.toprightx, two.toprighty);
 				
 			}
 			
-		} else if((one.bottomlefty > two.bottomlefty) && (one.toprighty < two.toprighty)) {
+		} else if((one.bottomlefty >= two.bottomlefty) && (one.toprighty <= two.toprighty)) {
 			
-			if((one.toprightx > two.bottomleftx) && (one.toprightx < two.toprightx)) {
+			if((one.toprightx >= two.bottomleftx) && (one.toprightx <= two.toprightx)) {
 				
 				intersection = new Rectangle(two.bottomleftx, one.bottomlefty, (one.toprightx - two.bottomleftx), one.height, one.toprightx, one.toprighty);
 				
-			} else if((one.bottomleftx > two.bottomleftx) && (one.bottomleftx < two.toprightx)) {
+			} else if((one.bottomleftx >= two.bottomleftx) && (one.bottomleftx <= two.toprightx)) {
 				
 				intersection = new Rectangle(one.bottomleftx, one.bottomlefty,(two.toprightx - one.bottomleftx), one.height, two.toprightx, one.toprighty);
 				
@@ -312,7 +312,7 @@ public class Rectangle {
 	 */
 	public static void main(String[] args) {
 		
-		Rectangle thisOne = new Rectangle(2,2,6,4,8,6);
+		Rectangle thisOne = new Rectangle(2,3,3,4,5,7);
 		Rectangle thatOne = new Rectangle(1,3,5,2,6,5);
 		intersection(thisOne, thatOne);
 		totalPerimeter(thisOne, thatOne);
