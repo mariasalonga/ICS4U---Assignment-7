@@ -203,11 +203,11 @@ public class Rectangle {
 		
 		if ((one.bottomleftx >= two.bottomleftx) && (one.toprightx <= two.toprightx) && (one.bottomlefty <= two.toprighty) && (one.bottomlefty >= two.bottomlefty)) {
 				
-				intersection = new Rectangle(one.bottomleftx, one.bottomlefty, one.width, (two.toprighty - one.bottomlefty), one.toprightx, two.toprighty);
+			intersection = new Rectangle(one.bottomleftx, one.bottomlefty, one.width, (two.toprighty - one.bottomlefty), one.toprightx, two.toprighty);
 				
 		} else if((one.bottomleftx >= two.bottomleftx) && (one.toprightx <= two.toprightx) && (one.toprighty >= two.bottomlefty) && (one.toprighty <= two.toprighty)) {
 				
-				intersection = new Rectangle(one.bottomleftx,(one.toprighty - (one.toprighty - two.bottomlefty)), one.width, (one.toprighty - two.bottomlefty), one.toprightx, one.toprighty);
+			intersection = new Rectangle(one.bottomleftx,(one.toprighty - (one.toprighty - two.bottomlefty)), one.width, (one.toprighty - two.bottomlefty), one.toprightx, one.toprighty);
 				
 		}
 		
@@ -226,7 +226,7 @@ public class Rectangle {
 			
 			if((two.toprightx >= one.bottomleftx) && (two.toprightx <= one.toprightx)) {
 				
-				intersection = new Rectangle(one.bottomleftx, two.bottomlefty, (two.toprightx - one.bottomleftx), two.height, two.toprightx, two.toprighty);
+				intersection = new Rectangle(two.bottomleftx, two.bottomlefty, two.width, two.height, two.toprightx, two.toprighty);
 				
 			} else if((two.bottomleftx >= one.bottomleftx) && (two.bottomleftx <= one.toprightx)) {
 				
@@ -295,11 +295,12 @@ public class Rectangle {
 		
 		boolean inside = false;
 		
-		if((one.bottomleftx > bottomleftx) && (one.bottomlefty > bottomlefty) && (one.toprightx < toprightx) && (one.toprighty < toprighty)) {
+		if((one.bottomleftx >= bottomleftx) && (one.bottomlefty >= bottomlefty) && (one.toprightx <= toprightx) && (one.toprighty <= toprighty)) {
 			
 			inside = true;
 			
-		} 
+		}
+		
 		return inside;
 		
 	}
@@ -312,8 +313,8 @@ public class Rectangle {
 	 */
 	public static void main(String[] args) {
 		
-		Rectangle thisOne = new Rectangle(2,3,3,4,5,7);
-		Rectangle thatOne = new Rectangle(1,3,5,2,6,5);
+		Rectangle thisOne = new Rectangle(1,1,3,3,4,4);
+		Rectangle thatOne = new Rectangle(2,2,3,3,5,5);
 		intersection(thisOne, thatOne);
 		totalPerimeter(thisOne, thatOne);
 		thisOne.contains(thatOne);
