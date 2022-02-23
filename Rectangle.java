@@ -226,7 +226,7 @@ public class Rectangle {
 			
 			if((two.toprightx >= one.bottomleftx) && (two.toprightx <= one.toprightx)) {
 				
-				intersection = new Rectangle(two.bottomleftx, two.bottomlefty, two.width, two.height, two.toprightx, two.toprighty);
+				intersection = new Rectangle(two.bottomleftx, two.bottomlefty, (two.toprightx - one.bottomleftx), two.height, two.toprightx, two.toprighty);
 				
 			} else if((two.bottomleftx >= one.bottomleftx) && (two.bottomleftx <= one.toprightx)) {
 				
@@ -313,8 +313,8 @@ public class Rectangle {
 	 */
 	public static void main(String[] args) {
 		
-		Rectangle thisOne = new Rectangle(1,1,3,3,4,4);
-		Rectangle thatOne = new Rectangle(2,2,3,3,5,5);
+		Rectangle thisOne = new Rectangle(1,2,5,2,6,4);
+		Rectangle thatOne = new Rectangle(2,1,2,4,4,5);
 		intersection(thisOne, thatOne);
 		totalPerimeter(thisOne, thatOne);
 		thisOne.contains(thatOne);
